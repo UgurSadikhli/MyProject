@@ -1,0 +1,26 @@
+services:
+  identityservice:
+    image: identityservice
+    build:
+      context: ./IdentityService
+      dockerfile: Dockerfile 
+    ports:
+      - "5001:80"
+  usersservice:
+    image: usersservice
+    build:
+      context: ./UsersService
+      dockerfile: Dockerfile
+    ports:
+      - "5002:80"
+  gatewayservice:
+    image: gatewayservice
+    build: 
+      context: ./GatewayServices
+      dockerfile: Dockerfile
+    ports: 
+      - "5000:80"  
+  rabbitmq:
+    image:  "rabbitmq:3-management"
+    ports:
+      - "8080:15672"
